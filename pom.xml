@@ -1,23 +1,8 @@
-<!--
-  Licensed to the Apache Software Foundation (ASF) under one or more
-  contributor license agreements.  See the NOTICE file distributed with
-  this work for additional information regarding copyright ownership.
-  The ASF licenses this file to You under the Apache License, Version 2.0
-  (the "License"); you may not use this file except in compliance with
-  the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!--这个是干啥的？-->
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
@@ -33,6 +18,8 @@
     <description>The parent project of dubbo</description>
     <url>https://github.com/apache/incubator-dubbo</url>
     <inceptionYear>2011</inceptionYear>
+
+    <!--证书-->
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -41,53 +28,17 @@
         </license>
     </licenses>
 
+    <!--这个是版本控制-->
     <scm>
         <url>https://github.com/apache/incubator-dubbo</url>
         <connection>scm:git:https://github.com/apache/incubator-dubbo.git</connection>
         <developerConnection>scm:git:https://github.com/apache/incubator-dubbo.git</developerConnection>
       <tag>HEAD</tag>
-  </scm>
-    <mailingLists>
-        <mailingList>
-            <name>Development List</name>
-            <subscribe>dev-subscribe@dubbo.apache.org</subscribe>
-            <unsubscribe>dev-unsubscribe@dubbo.apache.org</unsubscribe>
-            <post>dev@dubbo.apache.org</post>
-        </mailingList>
-        <mailingList>
-            <name>Commits List</name>
-            <subscribe>commits-subscribe@dubbo.apache.org</subscribe>
-            <unsubscribe>commits-unsubscribe@dubbo.apache.org</unsubscribe>
-            <post>commits@dubbo.apache.org</post>
-        </mailingList>
-        <mailingList>
-            <name>Issues List</name>
-            <subscribe>issues-subscribe@dubbo.apache.org</subscribe>
-            <unsubscribe>issues-unsubscribe@dubbo.apache.org</unsubscribe>
-            <post>issues@dubbo.apache.org</post>
-        </mailingList>
-    </mailingLists>
-    <developers>
-        <developer>
-            <id>dubbo.io</id>
-            <name>The Dubbo Project Contributors</name>
-            <email>dev-subscribe@dubbo.apache.org</email>
-            <url>http://dubbo.apache.org/</url>
-        </developer>
-    </developers>
+    </scm>
 
-    <organization>
-        <name>The Apache Software Foundation</name>
-        <url>http://www.apache.org/</url>
-    </organization>
-
-    <issueManagement>
-        <system>Github Issues</system>
-        <url>https://github.com/apache/incubator-dubbo/issues</url>
-    </issueManagement>
 
     <properties>
-        <!-- Test libs -->
+        <!-- 测试的包版本 -->
         <junit_version>4.12</junit_version>
         <hazelcast_version>3.9-EA</hazelcast_version>
         <hamcrest_version>1.3</hamcrest_version>
@@ -96,8 +47,8 @@
         <jaxb_api_version>2.2.7</jaxb_api_version>
         <cglib_version>2.2</cglib_version>
         <mockito_version>2.18.3</mockito_version>
-        <!-- Build args -->
-        <argline>-server -Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=128m -Dfile.encoding=UTF-8
+        <!-- 构建参数 -->
+        <argline>-server Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=128m -Dfile.encoding=UTF-8
             -Djava.net.preferIPv4Stack=true
         </argline>
         <skip_maven_deploy>false</skip_maven_deploy>
@@ -105,11 +56,14 @@
         <project.build.sourceEncoding>${file_encoding}</project.build.sourceEncoding>
 
         <profile.name>oss</profile.name>
-        <!-- for maven compiler plugin -->
+        <!-- maven的编译插件 -->
         <java_source_version>1.6</java_source_version>
         <java_target_version>1.6</java_target_version>
         <file_encoding>UTF-8</file_encoding>
-        <!-- Maven plugins -->
+
+
+
+        <!-- Maven 插件 -->
         <maven_jar_version>3.0.2</maven_jar_version>
         <maven_surefire_version>2.19.1</maven_surefire_version>
         <maven_deploy_version>2.8.2</maven_deploy_version>
@@ -124,6 +78,8 @@
         <checkstyle.skip>true</checkstyle.skip>
         <rat.skip>true</rat.skip>
     </properties>
+
+    <!--模块的划分-->
 
     <modules>
         <module>dubbo-common</module>
@@ -146,6 +102,7 @@
     </modules>
 
     <dependencyManagement>
+        <!--这个是阿里巴巴的bom,和spring的bom有一拼-->
         <dependencies>
             <dependency>
                 <groupId>com.alibaba</groupId>
